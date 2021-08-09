@@ -16,7 +16,7 @@
 					<td>{{ livre.id }}</td>
 					<td>{{ livre.titre }}</td>
 					<td>{{ livre.auteur }}</td>
-                    <td>{{ livre.disponible }}</td>
+                    <td>{% if livre.disponible %}Oui{% else %}Non{% endif %}</td>
 					<td>
 						<a href="{{ path('livEdit', {'livre' : livre.id}) }}">modifier</a>
                         <form style="display: inline;" method="post" action="{{ path('livDel', {'livre': livre.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer?');">
@@ -37,5 +37,5 @@
 		</tbody>
 	</table>
 
-	<a href="{{ path('livres') }}">Ajouter</a>
+	<a href="{{ path('livAdd') }}" title="Ajouter">Ajouter</a>
 {% endblock %}
