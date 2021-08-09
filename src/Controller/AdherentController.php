@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Adherent;
 use App\Form\AdherentType;
+use App\Repository\AdherentRepository;
+use App\Repository\EmpruntRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,10 +15,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdherentController extends AbstractController
 {
     #[Route('/adherent', name: 'adherent')]
-    public function index(): Response
+    public function index(AdherentRepository $adhRepo): Response
     {
         return $this->render('adherent/index.html.twig', [
-            'controller_name' => 'AdherentController',
+            'adherent' => $adhRepo->findAll()
         ]);
     }
 
@@ -30,9 +32,9 @@ class AdherentController extends AbstractController
      * @return RedirectResponse|Response
      */
     #[Route('/adherent/edit/{adherent}', name: "edit_adh")]
-    public function update(EntityManagerInterface $em, Request $post, Adherent $adh)
+    public function update(EntityManagerInterface $em, Request $post, Adherent $adherent)
     {
-        $form = $this->createForm(AdherentType::class, $adh);
+        $form = $this->createForm(AdherentType::class, $adherent);
         $form->handleRequest($post);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -44,7 +46,7 @@ class AdherentController extends AbstractController
 
         return $this->render("adherent/adhEdit.html.twig", [
             "form" => $form->createView(),
-            "adherent" => $adh
+            "adherent" => $adherent
         ]);
     }
 
@@ -82,12 +84,12 @@ class AdherentController extends AbstractController
      * @param Adherent $adh
      * @return RedirectResponse
      */
-    #[Route('adherent/delete/{adh}', name: "adh_del")]
-    public function delete(EntityManagerInterface $em, Request $delete, Adherent $adh)
+    #[Route('adherent/delete/{adherent}', name: "adh_del")]
+    public function delete(EntityManagerInterface $em, Request $delete, Adherent $adherent)
     {
         $csrfToken = $delete->request->get("_token");
-        if ($this->isCsrfTokenValid("delete" . $adh->getId(), $csrfToken)) {
-            $em->remove($adh);
+        if ($this->isCsrfTokenValid("delete" . $adherent->getId(), $csrfToken)) {
+            $em->remove($adherent);
             $em->flush();
             $this->addFlash("success", "Adherent supprimé");
         } else {

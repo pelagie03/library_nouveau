@@ -10,15 +10,18 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for adherent in adherents %}
+			{% for adherent in adherent %}
 				<tr>
 					<td>{{ adherent.id }}</td>
                     <td>{{ adherent.nom }}</td>
                     <td>{{ adherent.prenom }}</td>
-                    <td>{{ adherent.datenaiss }}</td>
 					<td>
 						<a href="{{ path('edit_adh', {'adherent' : adherent.id}) }}">modifier</a>
-						<a href="{{ path('adh_del', {'adherent' : adherent.id}) }}">supprimer</a>
+						<form style="display: inline;" method="post" action="{{ path('adh_del', {'adherent': adherent.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer?');">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ adherent.id) }}">
+                            <button class="btn">Supprimer</button>
+                        </form>
 					</td>
 				</tr>
 			{% else %}
@@ -32,5 +35,5 @@
 		</tbody>
 	</table>
 
-	<a href="{{ path('adh_ajout') }}">AJOUTER</a>
+	<a href="{{ path('add_adh') }}">AJOUTER</a>
 {% endblock %}

@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Emprunt;
 use App\Form\EmpruntType;
+use App\Repository\EmpruntRepository;
+use App\Repository\LivresRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,10 +15,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class EmpruntController extends AbstractController
 {
     #[Route('/emprunt', name: 'emprunt')]
-    public function index(): Response
+    public function index(EmpruntRepository $empruntRepo, LivresRepository $livreRepo): Response
     {
-        return $this->render('emprunt/index.html.twig', [
-            'controller_name' => 'EmpruntController',
+        return $this->render('livres/index.html.twig', [
+            'livres' => $livreRepo->findAll(),
+            'emprunts' => $empruntRepo->findAll(),
         ]);
     }
 
