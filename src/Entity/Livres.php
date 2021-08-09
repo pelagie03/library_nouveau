@@ -126,4 +126,8 @@ class Livres
     {
         return $this->titre;
     }
+    public function __toStringAu()
+    {
+        return $this->auteur;
+    }
 }

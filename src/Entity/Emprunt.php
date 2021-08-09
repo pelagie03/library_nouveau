@@ -101,4 +101,13 @@ class Emprunt
     {
         return $this->dateRet;
     }
+    public function __toStringA()
+    {
+        return $this->adherent;
+    }
+
+    public function __toStringE()
+    {
+        return $this->emprunts;
+    }
 }

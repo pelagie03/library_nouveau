@@ -101,4 +101,12 @@ class Adherent
     {
         return $this->nom;
     }
+    public function __toStringP()
+    {
+        return $this->prenom;
+    }
+    public function __toStringL()
+    {
+        return $this->livreEmprunt;
+    }
 }
