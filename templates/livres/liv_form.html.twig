@@ -1,0 +1,36 @@
+{{ form_start(form, {'attr': {'class': 'row'}}) }}
+	<div class="input-field col s12 m12 l12">
+		{{ form_label(form.titre, 'Titre') }}
+		{{ form_widget(form.titre) }}
+		<span class="error">{{ form_errors(form.titre) }}</span>
+	</div>
+
+	<div class="input-field col s12 m6 l6">
+
+		{{ form_label(form.auteur, 'Nom de l\'auteur') }}
+		{{ form_widget(form.auteur, {'attr': {'placeholder': 'Boutons et dentelles'}}) }}
+		<span class="error">{{ form_errors(form.auteur) }}</span>
+	</div>
+
+	<div class="input-field col s12 m6 l6">
+		
+		{{ form_label(form.isbn, 'ISBN') }}
+		{{ form_widget(form.isbn) }}
+		
+		<span class="error">{{ form_errors(form.isbn) }}</span>
+	</div>
+    <div class="input-field col s12 m12 l12">
+		{{ form_label(form.genre, 'Genre') }}
+		{{ form_widget(form.genre, {'attr': {'placeholder': 'Jeune adulte'}}) }}
+		
+		<span class="error">{{ form_errors(form.genre) }}</span>
+	</div>
+	<div class="input-field col s12 m12 l12">
+		<p>
+			<label>
+		        {{ form_widget(form.disponible, {'attr': {'class': 'filled-in'}}) }}
+	      	</label>
+      	</p>
+	</div>
+
+{{ form_end(form) }}

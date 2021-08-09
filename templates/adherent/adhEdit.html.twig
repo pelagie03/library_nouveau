@@ -1,0 +1,30 @@
+<!-- Modal used in order to edit a subscriber -->
+<div class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Modifier ou supprimer un adhérent</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-12 text-center">
+						{% include "includes/adh_form.html.twig" %}
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="input-field col s12 m12 l12">
+					<input type="submit" name="" value="Modifier" class="btn btn-primary">
+				</div>
+				<form method="post" action="{{ path('adh_del', {'id': adherent.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer?');">
+					<input type="hidden" name="_method" value="DELETE">
+					<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ adherent.id) }}">
+					<button class="btn">Supprimer</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

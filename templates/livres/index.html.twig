@@ -1,20 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LivresController!{% endblock %}
+{% block title %}LIVRES &mdash;
+	{{ parent() }}
+{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{% block entête %}
+	{% block navigation %}
+		<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+			<li class="active"><a href="{{path('livres')}}"><span>LIVRES</span></a></li>
+			<li class="has-children">
+				<a href="{{path('adhlist')}}"><span>ADHERENTS</span></a>
+				<ul class="dropdown">
+					<li><a href="{{path('adhlist')}}">LISTE DES ADHERENTS</a></li>
+					<li><a href="{{path('adh_ajout')}}">INSCRIPTION</a></li>
+					<li><a href="{{path('empList')}}">EMPRUNTS</a></li>
+				</ul>
+			</li>
+		</ul>
+    {% endblock %}
+{% endblock %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/hp/Documents/UCAO-UUT COURS/Licence 3/Semestre 2/ProjetMIDA/New_project/library4/src/Controller/LivresController.php'|file_link(0) }}">src/Controller/LivresController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/hp/Documents/UCAO-UUT COURS/Licence 3/Semestre 2/ProjetMIDA/New_project/library4/templates/livres/index.html.twig'|file_link(0) }}">templates/livres/index.html.twig</a></code></li>
-    </ul>
-</div>
+{% block content %}
+
+	<div class = "container">
+		<div class = "row">
+			<!--Tableau: liste des livres-->
+			<div class = "col">
+				{% block livList %}
+					{% include "livTab.html.twig" %}
+				{% endblock %}
+			</div>
+			<div class = "col">
+				<!--Liste des emprunts: tableau-->
+				{% block empList %}
+					{% include "emprunt/index.html.twig" %}
+				{% endblock %}
+
+			</div>
+		</div>
+
+	</div>
 {% endblock %}

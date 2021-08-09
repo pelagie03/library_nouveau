@@ -1,0 +1,25 @@
+{{ form_start(form, {'attr': {'class': 'row'}}) }}
+	<div class="input-field col s12 m12 l12">
+		{{ form_label(form.matricule, 'Matricule de l\'adhérent') }}
+		{{ form_widget(form.matricule) }}        
+		<span class="error">{{ form_errors(form.matricule) }}</span>
+	</div>
+
+	<div class="input-field col s12 m6 l6">
+		{{ form_label(form.nom, 'Nom') }}
+		{{ form_widget(form.nom) }}		
+		<span class="error">{{ form_errors(form.nom) }}</span>
+	</div>
+
+    <div class="input-field col s12 m12 l12">
+        {{ form_label(form.prenom, 'Prénom') }}
+		{{ form_widget(form.prenom) }}
+		<span class="error">{{ form_errors(form.prenom) }}</span>
+	</div>
+    <div class="input-field col s12 m12 l12">
+		
+        {{ form_label(form.datenaiss, 'Date de naissance') }}
+		{{ form_widget(form.datenaiss) }}
+		<span class="error">{{ form_errors(form.datenaiss) }}</span>
+	</div>
+{{ form_end(form) }}

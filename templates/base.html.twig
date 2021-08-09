@@ -50,28 +50,20 @@
                     <div class="row align-items-center">
 
                         <div class="col-11 col-xl-2">
-                            <h1 class="mb-0 site-logo"><a href="accueil.html" class="text-black h2 mb-0">BIBLIOTHEQUE</a></h1>
+                            <h1 class="mb-0 site-logo"><a href="{{path('livres')}}" class="text-black h2 mb-0">BIBLIOTHEQUE</a></h1>
                         </div>
                         <div class="col-12 col-md-10 d-none d-xl-block">
                             <nav class="site-navigation position-relative text-right" role="navigation">
                             
                             {% block navigation %}
                                 <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                                    <!--<li class="active"><a href="accueil.html"><span>ACCUEIL</span></a></li>-->
-                                    <li><a href="{{path('livres')}}"><span>LIVRES</span></a></li>
+                                    <li class="active"><a href="{{path('livres')}}"><span>LIVRES</span></a></li>
                                     <li class="has-children">
                                         <a href="{{path('adhlist')}}"><span>ADHERENTS</span></a>
                                         <ul class="dropdown">
                                             <li><a href="{{path('adhlist')}}">LISTE DES ADHERENTS</a></li>
                                             <li><a href="{{path('adh_ajout')}}">INSCRIPTION</a></li>
                                             <li><a href="{{path('empList')}}">EMPRUNTS</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-children">
-                                        <a href="{{path('journal')}}"><span>DOCUMENTS</span></a>
-                                        <ul class="dropdown">
-                                            <li><a href="{{path('journal')}}">JOURNAL</a></li>
-                                            <li><a href="{{path('bd')}}">VOLUME</a></li>
                                         </ul>
                                     </li>
                                 </ul>

@@ -1,0 +1,25 @@
+{{ form_start(form, {'attr': {'class': 'row'}}) }}
+	<div class="input-field col s12 m12 l12">		
+        {{ form_label(form.adherent, 'Adhérent') }}
+		{{ form_widget(form.adherent) }}
+		<span class="error">{{ form_errors(form.adherent) }}</span>
+	</div>
+
+	<div class="input-field col s12 m6 l6">		
+		{{ form_label(form.pret, 'Livre emprunté') }}
+		{{ form_widget(form.pret) }}
+		<span class="error">{{ form_errors(form.pret) }}</span>
+	</div>
+
+    <div class="input-field col s12 m12 l12">		
+        {{ form_label(form.dateEmp, 'Date d\'emprunt') }}
+		{{ form_widget(form.dateEmp) }}
+		<span class="error">{{ form_errors(form.dateEmp) }}</span>
+	</div>
+
+    <div class="input-field col s12 m12 l12">		
+        {{ form_label(form.dateRet, 'Date de retrait') }}
+		{{ form_widget(form.dateRet) }}
+		<span class="error">{{ form_errors(form.dateRet) }}</span>
+	</div>
+{{ form_end(form) }}
