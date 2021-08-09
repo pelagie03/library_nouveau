@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Adherent;
 use App\Entity\Emprunt;
+use App\Entity\Livres;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -15,18 +18,14 @@ class EmpruntType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('adherent', CollectionType::class, [
-                'entry_type' => AdherentType::class,
-                'entry_options' => ['label' => false],
-                'allow_add' => true,
-                'allow_delete' => true,
+            ->add('adherent', EntityType::class, [
+                'class' => Adherent::class,
+                'choice_label' => 'nom',
                 'required' => true
             ])
-            ->add('emprunts', CollectionType::class, [
-                'entry_type' => LivresType::class,
-                'entry_options' => ['label' => false],
-                'allow_add' => true,
-                'allow_delete' => true,
+            ->add('emprunts', EntityType::class, [
+                'class' => Livres::class,
+                'choice_label' => 'titre',
                 'required' => true
             ])
             ->add('dateEmp', DateType::class, ['required' => true])
