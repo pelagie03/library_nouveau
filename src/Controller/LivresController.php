@@ -27,13 +27,13 @@ class LivresController extends AbstractController
      *
      * @param EntityManagerInterface $em
      * @param Request $post
-     * @param Livres|null $livres
+     * @param Livres|null $livre
      * @return RedirectResponse|Response
      */
-    #[Route('/livres/edit/{livres}', name: "edit_livres")]
-    public function update(EntityManagerInterface $em, Request $post, Livres $livres)
+    #[Route('/livres/edit/{livre}', name: "livEdit")]
+    public function update(EntityManagerInterface $em, Request $post, Livres $livre)
     {
-        $form = $this->createForm(LivresType::class, $livres) ;
+        $form = $this->createForm(LivresType::class, $livre) ;
         $form->handleRequest($post) ;
 
         if($form->isSubmitted() && $form->isValid())
@@ -46,18 +46,18 @@ class LivresController extends AbstractController
 
         return $this->render("livres/livEdit.html.twig", [
             "form" => $form->createView(),
-            "livres" => $livres
+            "livres" => $livre
         ]) ;
     }
 
     /**
-     * Enregistrer un livre existant.
+     * Enregistrer un livre.
      *
      * @param EntityManagerInterface $em
      * @param Request $post
      * @return RedirectResponse|Response
      */
-    #[Route('/livres/add', name: "add_livres")]
+    #[Route('/livres/add', name: "livAdd")]
     public function edit(EntityManagerInterface $em, Request $post)
     {
         $livres = new Livres() ;
@@ -83,16 +83,16 @@ class LivresController extends AbstractController
      *
      * @param EntityManagerInterface $em
      * @param Request $delete
-     * @param Livres $livres
+     * @param Livres $livre
      * @return RedirectResponse
      */
-    #[Route('livres/delete/{livres}', name: "liv_del")]
-    public function delete(EntityManagerInterface $em, Request $delete, Livres $livres)
+    #[Route('livres/delete/{livre}', name: "livDel")]
+    public function delete(EntityManagerInterface $em, Request $delete, Livres $livre)
     {
         $csrfToken = $delete->request->get("_token") ;
-        if($this->isCsrfTokenValid("delete" . $livres->getId(), $csrfToken))
+        if($this->isCsrfTokenValid("delete" . $livre->getId(), $csrfToken))
         {
-            $em->remove($livres) ;
+            $em->remove($livre) ;
             $em->flush() ;
             $this->addFlash("success", "Livre supprimé") ;
         }
