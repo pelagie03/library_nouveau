@@ -17,8 +17,8 @@
                     <td>{{ adherent.prenom }}</td>
                     <td>{{ adherent.datenaiss }}</td>
 					<td>
-						<a href="{{ path('adhEdit', {'adherent' : adherent.id}) }}">modifier</a>
-						<a href="{{ path('adhDel', {'adherent' : adherent.id}) }}">supprimer</a>
+						<a href="{{ path('edit_adh', {'adherent' : adherent.id}) }}">modifier</a>
+						<a href="{{ path('adh_del', {'adherent' : adherent.id}) }}">supprimer</a>
 					</td>
 				</tr>
 			{% else %}
