@@ -18,8 +18,8 @@
 					<td>{{ livre.auteur }}</td>
                     <td>{{ livre.disponible }}</td>
 					<td>
-						<a href="{{ path('livEdit', {'livre' : livre.id}) }}">modifier</a>
-						<a href="{{ path('livDel', {'livre' : livre.id}) }}">supprimer</a>
+						<a href="{{ path('edit_livres', {'livre' : livre.id}) }}">modifier</a>
+						<a href="{{ path('liv_del', {'livre' : livre.id}) }}">supprimer</a>
 					</td>
 				</tr>
 			{% else %}
