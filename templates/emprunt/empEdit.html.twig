@@ -19,14 +19,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<div class="input-field col s12 m12 l12">
-					<input type="submit" name="" value="Prolonger" class="btn btn-primary">
-				</div>
-				<form method="post" action="{{ path('emp_del', {'id': emprunt.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer?');">
-					<input type="hidden" name="_method" value="DELETE">
-					<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ emprunt.id) }}">
-					<button class="btn">Rendre</button>
-				</form>
+				
 			</div>
 		</div>
 	</div>
