@@ -29,13 +29,13 @@ class EmpruntController extends AbstractController
      *
      * @param EntityManagerInterface $em
      * @param Request $post
-     * @param Emprunt|null $emp
+     * @param Emprunt|null $emprunt
      * @return RedirectResponse|Response
      */
-    #[Route('/emprunt/edit/{emp}', name: "edit_emp")]
-    public function update(EntityManagerInterface $em, Request $post, Emprunt $emp)
+    #[Route('/emprunt/edit/{emprunt}', name: "edit_emp")]
+    public function update(EntityManagerInterface $em, Request $post, Emprunt $emprunt)
     {
-        $form = $this->createForm(EmpruntType::class, $emp);
+        $form = $this->createForm(EmpruntType::class, $emprunt);
         $form->handleRequest($post);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -47,7 +47,7 @@ class EmpruntController extends AbstractController
 
         return $this->render("emprunt/empEdit.html.twig", [
             "form" => $form->createView(),
-            "emprunt" => $emp
+            "emprunt" => $emprunt
         ]);
     }
 
@@ -61,12 +61,12 @@ class EmpruntController extends AbstractController
     #[Route('/emprunt/add', name: "add_emp")]
     public function edit(EntityManagerInterface $em, Request $post)
     {
-        $emp = new Emprunt();
-        $form = $this->createForm(EmpruntType::class, $emp);
+        $emprunt = new Emprunt();
+        $form = $this->createForm(EmpruntType::class, $emprunt);
         $form->handleRequest($post);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em->persist($emp);
+            $em->persist($emprunt);
             $em->flush();
             $this->addFlash("success", "Emprunt effectué avec succès");
             return $this->redirectToRoute("livres");
@@ -82,15 +82,15 @@ class EmpruntController extends AbstractController
      *
      * @param EntityManagerInterface $em
      * @param Request $delete
-     * @param Emprunt $emp
+     * @param Emprunt $emprunt
      * @return RedirectResponse
      */
-    #[Route('emprunt/delete/{emp}', name: "emp_del")]
-    public function delete(EntityManagerInterface $em, Request $delete, Emprunt $emp)
+    #[Route('emprunt/delete/{emprunt}', name: "emp_del")]
+    public function delete(EntityManagerInterface $em, Request $delete, Emprunt $emprunt)
     {
         $csrfToken = $delete->request->get("_token");
-        if ($this->isCsrfTokenValid("delete" . $emp->getId(), $csrfToken)) {
-            $em->remove($emp);
+        if ($this->isCsrfTokenValid("delete" . $emprunt->getId(), $csrfToken)) {
+            $em->remove($emprunt);
             $em->flush();
             $this->addFlash("success", "Livre rendu");
         } else {
