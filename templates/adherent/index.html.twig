@@ -6,55 +6,25 @@
 
 {% block entête %}
 	{% block navigation %}
-		<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-			<li>
-				<a href="accueil.html">
-					<span>ACCUEIL</span>
-				</a>
-			</li>
-			<li>
-				<a href="livre.html">
-					<span>LIVRES</span>
-				</a>
-			</li>
-			<li class="has-children active">
-				<a href="adherent.html">
-					<span>ADHERENTS</span>
-				</a>
-				<ul class="dropdown">
-					<li>
-						<a href="#">LISTE DES ADHERENTS</a>
-					</li>
-					<li>
-						<a href="#">INSCRIPTION</a>
-					</li>
-					<li>
-						<a href="#">EMPRUNTS</a>
-					</li>
-				</ul>
-			</li>
-			<li class="has-children">
-				<a href="document.html">
-					<span>DOCUMENTS</span>
-				</a>
-				<ul class="dropdown">
-					<li>
-						<a href="#">JOURNAL</a>
-					</li>
-					<li>
-						<a href="#">VOLUME</a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	{% endblock %}
+	<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+		<li><a href="{{path('livres')}}"><span>LIVRES</span></a></li>
+		<li class="has-children active">
+			<a href="{{path('adhlist')}}"><span>ADHERENTS</span></a>
+			<ul class="dropdown">
+				<li><a href="{{path('adhlist')}}">LISTE DES ADHERENTS</a></li>
+				<li><a href="{{path('adh_ajout')}}">INSCRIPTION</a></li>
+				<li><a href="{{path('empList')}}">EMPRUNTS</a></li>
+			</ul>
+		</li>
+	</ul>
+{% endblock %}
 {% endblock %}
 
 {% block content %}
 	<div class="container">
 			<!--Tableau: liste des adhérents-->
 			{% block adhList %}
-				{% include "_tableau.html.twig" %}
+				{% include "AdhTab.html.twig" %}
 			{% endblock %}
 		
 	</div>

@@ -4,30 +4,26 @@
 		<thead>
 			<tr>
 				<th scope="col">N°</th>
-				<th scope="col">Matricule</th>
 				<th scope="col">Nom</th>
 				<th scope="col">Prénom</th>
-				<th scope="col">Date de naissance</th>
                 <th scope="col">Action</th>
 			</tr>
 		</thead>
 		<tbody>
-			{% for adherent in adherent %}
+			{% for adherent in adherents %}
 				<tr>
 					<td>{{ adherent.id }}</td>
-                    <td>{{ adherent.matricule }}</td>
                     <td>{{ adherent.nom }}</td>
                     <td>{{ adherent.prenom }}</td>
                     <td>{{ adherent.datenaiss }}</td>
 					<td>
-						<a href="{{ path('adhEdit', {'id' : adherent.id}) }}">modifier</a>
-						<a href="{{ path('adh_del', {'id' : adherent.id}) }}">supprimer</a>
+						<a href="{{ path('adhEdit', {'adherent' : adherent.id}) }}">modifier</a>
+						<a href="{{ path('adhDel', {'adherent' : adherent.id}) }}">supprimer</a>
 					</td>
 				</tr>
 			{% else %}
 				<tr>
 					<td colspan="2">no records found</td>
-                    <td colspan="2">no records found</td>
                     <td colspan="2">no records found</td>
                     <td colspan="2">no records found</td>
                     <td colspan="2">no records found</td>

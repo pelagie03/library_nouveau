@@ -12,13 +12,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for emprunt in emprunt %}
+			{% for emprunt in emprunts %}
 				<tr>
 					<td>{{ emprunt.id }}</td>
 					<td>{{ emprunt.adherent }}</td>
-					<td>{{ emprunt.pret }}</td>
-					<td>{{ emprunt.date_emprunt }}</td>
-					<td>{{ emprunt.date_retour }}</td>
+					<td>{{ emprunt.emprunts }}</td>
+					<td>{{ emprunt.dateEmp }}</td>
+					<td>{{ emprunt.dateRet }}</td>
 					<td>
 						<a href="{{ path('emp_edit', {'id': emprunt.id}) }}">prolonger</a>
 						<a href="{{ path('emp_del', {'id': emprunt.id}) }}">Rendre</a>

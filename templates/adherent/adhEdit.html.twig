@@ -11,7 +11,7 @@
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-xs-12 text-center">
-						{% include "includes/adh_form.html.twig" %}
+						{% include "adh_form.html.twig" %}
 					</div>
 				</div>
 			</div>
@@ -19,7 +19,7 @@
 				<div class="input-field col s12 m12 l12">
 					<input type="submit" name="" value="Modifier" class="btn btn-primary">
 				</div>
-				<form method="post" action="{{ path('adh_del', {'id': adherent.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer?');">
+				<form method="post" action="{{ path('adhDel', {'adherent': adherent.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer?');">
 					<input type="hidden" name="_method" value="DELETE">
 					<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ adherent.id) }}">
 					<button class="btn">Supprimer</button>
