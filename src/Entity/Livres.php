@@ -49,11 +49,11 @@ class Livres
         return $this->id;
     }
 
-    public function setId(int $id) : self
+    public function setId(int $id): self
     {
         $this->id = $id;
 
-        return $this ;
+        return $this;
     }
 
     public function getTitre(): ?string
@@ -120,5 +120,10 @@ class Livres
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->titre;
     }
 }

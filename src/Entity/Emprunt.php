@@ -91,4 +91,14 @@ class Emprunt
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->dateEmp;
+    }
+
+    public function __toStringR()
+    {
+        return $this->dateRet;
+    }
 }
