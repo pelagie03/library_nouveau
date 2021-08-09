@@ -27,8 +27,10 @@
 		<div class = "row">
 			<!--Tableau: liste des livres-->
 			<div class = "col">
+                {{ include ('includes/_alert.html.twig', {type: 'success'}) }}
+                {{ include ('includes/_alert.html.twig', {type: 'warning'}) }}
 				{% block livList %}
-					{% include "livTab.html.twig" %}
+					{% include "livres/livTab.html.twig" %}
 				{% endblock %}
 			</div>
 			<div class = "col">
