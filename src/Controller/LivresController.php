@@ -6,18 +6,18 @@ use App\Entity\Livres;
 use App\Form\LivresType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use App\Repository\{EmpruntRepository, LivresRepository};
+use Symfony\Component\HttpFoundation\{RedirectResponse, Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
 class LivresController extends AbstractController
 {
     #[Route('/livres', name: 'livres')]
-    public function index(): Response
+    public function index(LivresRepository $livreRepo, EmpruntRepository $empruntRepo): Response
     {
         return $this->render('livres/index.html.twig', [
-            'controller_name' => 'LivresController',
+            'livres' => $livreRepo->findAll(),
+            'emprunts' => $empruntRepo->findAll(),
         ]);
     }
 
